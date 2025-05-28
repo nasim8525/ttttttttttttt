@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>গ্রামের লোক | ধরমপুর</title>
+    <style>
+        body { font-family: sans-serif; background: #f9f9f9; padding: 20px; }
+        nav a { margin: 0 10px; text-decoration: none; color: #005; }
+        nav { margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #eee; }
+        input[type="text"] { margin-bottom: 10px; padding: 5px; width: 100%; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">হোম</a>
+        <a href="contact.html">যোগাযোগ</a>
+        <a href="population.html">জনসংখ্যা</a>
+        <a href="notable.html">কৃতি সন্তান</a>
+        <a href="institutions.html">প্রতিষ্ঠান</a>
+        <a href="people.html">গ্রামের লোক</a>
+    </nav>
+    <h1>গ্রামের লোক</h1>
+    
+<input type="text" id="searchInput" onkeyup="searchTable()" placeholder="খুঁজুন...">
+<table id="peopleTable">
+    <thead>
+        <tr><th>নাম</th><th>মোবাইল</th><th>পাড়ার নাম</th><th>রক্তের গ্রুপ</th><th>পেশা</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>রহিম উদ্দিন</td><td>০১৭xxxxxxxx</td><td>পূর্ব পাড়া</td><td>O+</td><td>ব্যবসায়ী</td></tr>
+        <tr><td>সাবিনা আক্তার</td><td>০১৮xxxxxxxx</td><td>পশ্চিম পাড়া</td><td>A+</td><td>শিক্ষিকা</td></tr>
+    </tbody>
+</table>
+<script>
+function searchTable() {
+    var input = document.getElementById("searchInput");
+    var filter = input.value.toLowerCase();
+    var rows = document.querySelector("#peopleTable tbody").rows;
+    for (var i = 0; i < rows.length; i++) {
+        var match = false;
+        for (var j = 0; j < rows[i].cells.length; j++) {
+            if (rows[i].cells[j].textContent.toLowerCase().includes(filter)) {
+                match = true;
+                break;
+            }
+        }
+        rows[i].style.display = match ? "" : "none";
+    }
+}
+</script>
+
+</body>
+</html>
